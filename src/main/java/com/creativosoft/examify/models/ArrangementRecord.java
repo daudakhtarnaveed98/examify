@@ -7,7 +7,7 @@ import javax.persistence.Table;
 import java.time.LocalTime;
 
 @Entity
-@Table(name = "Arrangement_Records")
+@Table(name = "arrangement_records")
 public class ArrangementRecord {
     // Class attributes.
     @Id
