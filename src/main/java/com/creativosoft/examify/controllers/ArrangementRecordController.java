@@ -15,6 +15,7 @@ public class ArrangementRecordController {
         this.recordRepository = recordRepository;
     }
 
+    @CrossOrigin
     @GetMapping(path = "/all")
     public @ResponseBody
     Iterable<ArrangementRecord> getAllUsers() {

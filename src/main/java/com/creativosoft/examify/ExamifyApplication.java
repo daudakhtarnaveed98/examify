@@ -14,5 +14,7 @@ public class ExamifyApplication {
 
         SpringApplication.run(ExamifyApplication.class, args);
         Database.createDatabase();
+        System.out.println("Database Created Successfully...");
+        System.out.println("Please visit: <http://localhost/arrangements> to find your exam schedule.");
     }
 }
