@@ -1,20 +1,21 @@
+// Package specification.
 package com.creativosoft.examify;
 
+// Importing libraries.
 import com.creativosoft.examify.helpers.Database;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
 import java.io.IOException;
-import java.text.ParseException;
 
+// Annotation for spring boot.
 @SpringBootApplication
+// ExamifyApplication class definition.
 public class ExamifyApplication {
-
-    public static void main(String[] args) throws IOException, ParseException {
-
+    // Main method to start program execution.
+    public static void main(String[] args) throws IOException {
+        // Running spring application.
         SpringApplication.run(ExamifyApplication.class, args);
+        // Creating database.
         Database.createDatabase();
-        System.out.println("Database Created Successfully...");
-        System.out.println("Please visit: <http://localhost:8081> to find your exam schedule.");
     }
 }

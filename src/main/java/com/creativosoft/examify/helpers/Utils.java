@@ -1,14 +1,16 @@
+// Package specification.
 package com.creativosoft.examify.helpers;
 
+// Importing libraries.
 import com.creativosoft.examify.models.ArrangementRecord;
 import org.apache.poi.ss.usermodel.Row;
-import java.text.ParseException;
 import java.time.LocalTime;
 
+// Utils class definition.
 abstract class Utils {
     // Methods.
     // Method to arrangements object for given row.
-    static ArrangementRecord getArrangementObject(Row row) throws ParseException {
+    static ArrangementRecord getArrangementObject(Row row) {
         // Variables.
         int serialNumber;
         int studentRegistrationNumber;

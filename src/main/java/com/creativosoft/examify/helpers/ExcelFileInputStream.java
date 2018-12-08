@@ -1,20 +1,25 @@
+// Package specification.
 package com.creativosoft.examify.helpers;
 
+// Importing libraries.
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
-public class ExcelFileInputStream {
+// ExcelFileInputStream class definition.
+class ExcelFileInputStream {
     // Attributes.
     private String excelFileExtension;
     private FileInputStream fileInputStream;
 
     // Constructor.
-    public ExcelFileInputStream(String pathToExcelFile) throws FileNotFoundException {
+    ExcelFileInputStream(String pathToExcelFile) throws FileNotFoundException {
+        // Print error if user provides no path.
         if (pathToExcelFile.equals("")) {
-            System.out.println("Error: path not provided.");
+            System.out.println("\033[0;31m" + "Error: path not provided.");
             return;
         }
+        // Else check for file extension and set the attribute excelFileExtension.
         else {
             if (pathToExcelFile.endsWith(".xls"))
                 this.excelFileExtension = ".xls";
@@ -25,17 +30,18 @@ public class ExcelFileInputStream {
                 return;
             }
         }
+        // Initialize fileInputStream attribute based on pathToExcelFile.
         this.fileInputStream = new FileInputStream(new File(pathToExcelFile));
     }
 
     // Methods.
     // Getter for pathToExcelFile.
-    public String getExcelFileExtension() {
+    String getExcelFileExtension() {
         return excelFileExtension;
     }
 
     // Getter for fileInputStream.
-    public FileInputStream getFileInputStream() {
+    FileInputStream getFileInputStream() {
         return fileInputStream;
     }
 }
