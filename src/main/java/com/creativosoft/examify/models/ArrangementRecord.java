@@ -1,13 +1,18 @@
+// Package specification.
 package com.creativosoft.examify.models;
 
+// Importing libraries.
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.time.LocalTime;
 
+// Persistence annotations for hibernate entity and table.
 @Entity
 @Table(name = "arrangement_records")
+
+// ArrangementRecord class definition.
 public class ArrangementRecord {
     // Class attributes.
     @Id
@@ -35,10 +40,12 @@ public class ArrangementRecord {
     private String examLocation;
 
     // Constructors.
+    // Default not parameter constructor,
     public ArrangementRecord() {
 
     }
 
+    // Constructor with ten parameters.
     public ArrangementRecord(int serialNumber, int studentRegistrationNumber, String studentName, String courseName, String batch,
                       String courseCode, String date, String day, LocalTime startTime,
                       LocalTime endTime, String examLocation) {
