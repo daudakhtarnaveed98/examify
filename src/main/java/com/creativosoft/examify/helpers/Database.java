@@ -16,7 +16,7 @@ import java.util.Set;
 public class Database {
 
     // Constructor.
-    public Database(String pathToExcelFile) throws IOException, ParseException {
+    private Database(String pathToExcelFile) throws IOException, ParseException {
         Set<Row> rows;
 
         // Creating an excel file input stream.

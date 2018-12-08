@@ -9,13 +9,13 @@ import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
 
-public class ExcelXLS {
+class ExcelXLS {
     // Attributes.
     private FileInputStream fileInputStream;
     private Set<Row> rows;
 
     // Constructor.
-    public ExcelXLS(FileInputStream fileInputStream) throws IOException {
+    ExcelXLS(FileInputStream fileInputStream) throws IOException {
         if (fileInputStream != null) {
             this.fileInputStream = fileInputStream;
             this.rows = new HashSet<>();
@@ -29,7 +29,7 @@ public class ExcelXLS {
     // Methods.
     // Getters.
     // Getter for rows.
-    public Set<Row> getRows() {
+    Set<Row> getRows() {
         return rows;
     }
 
