@@ -5,9 +5,7 @@ package com.creativosoft.examify.helpers;
 import com.creativosoft.examify.models.ArrangementRecord;
 import org.apache.poi.ss.usermodel.Row;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
 import org.jetbrains.annotations.NotNull;
 import java.io.File;
 import java.io.IOException;
@@ -17,9 +15,13 @@ import java.util.Set;
 // Database class definition.
 public class Database {
 
+    // Attributes.
+    private static DBHandler handler;
+
     // Constructor with one parameter.
     private Database(String pathToExcelFile) throws IOException {
         Set<Row> rows;
+        handler = new DBHandler();
 
         // Creating an excel file input stream.
         ExcelFileInputStream inputStream = new ExcelFileInputStream(pathToExcelFile);
@@ -53,12 +55,7 @@ public class Database {
 
     // Method to create xls table.
     private static void createTable(@NotNull Set<Row> rows) {
-        // Creating configuration based on ArrangementRecord class.
-        Configuration configuration = new Configuration().configure().addAnnotatedClass(ArrangementRecord.class);
-        // Creating session factory based on above configuration.
-        SessionFactory sessionFactory = configuration.buildSessionFactory();
-        // Creating session from above session factory.
-        Session session = sessionFactory.openSession();
+        Session session = handler.openSession();
 
         // Iterating the rows set using for each loop.
         for (Row row : rows) {
@@ -79,14 +76,12 @@ public class Database {
 
         // Closing session.
         session.close();
-        // Closing session factory.
-        sessionFactory.close();
     }
 
     // Method to create database.
     public static void createDatabase() throws IOException {
         // Variables.
-        String path = "excel\\";
+        String path = "excel/";
         File folder = new File(path);
         File[] files = folder.listFiles();
         int fileSelected;

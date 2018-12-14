@@ -2,34 +2,36 @@
 package com.creativosoft.examify.controllers;
 
 // Importing libraries.
-import com.creativosoft.examify.models.ArrangementRecord;
-import com.creativosoft.examify.repositories.ArrangementRecordRepository;
+import com.creativosoft.examify.helpers.DBHandler;
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import java.util.List;
 
 // Annotation for rest controller.
 @RestController
 // Annotation for requesting url mapping.
-@RequestMapping(path = "arrangements")
+@RequestMapping("/arrangements")
 // ArrangementRecordController class definition.
 public class ArrangementRecordController {
 
     // Attributes.
-    private final ArrangementRecordRepository recordRepository;
+    private static DBHandler handler;
 
     // Constructor injection for recordRepository.
     @Autowired
-    public ArrangementRecordController(ArrangementRecordRepository recordRepository) {
-        this.recordRepository = recordRepository;
+    public ArrangementRecordController() {
+        handler = new DBHandler();
     }
 
     // Enabling cross origin.
     @CrossOrigin
     // Get mapping annotation to get JSON response.
-    @GetMapping(path = "/all")
+    @GetMapping("/{studentRegistration}")
     // Method to get JSON response at specified url.
     public @ResponseBody
-    Iterable<ArrangementRecord> getAllUsers() {
-        return recordRepository.findAll();
+    List getAllUsers(@PathVariable(value="studentRegistration") int studentRegistration) {
+        Session session = handler.openSession();
+        return session.createQuery("FROM ArrangementRecord R WHERE R.studentRegistrationNumber = " + studentRegistration).list();
     }
 }
