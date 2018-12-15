@@ -32,6 +32,7 @@ public class ArrangementRecordController {
     public @ResponseBody
     List getAllUsers(@PathVariable(value="studentRegistration") int studentRegistration) {
         Session session = handler.openSession();
-        return session.createQuery("FROM ArrangementRecord R WHERE R.studentRegistrationNumber = " + studentRegistration).list();
+        String hql = String.format("FROM ArrangementRecord R WHERE R.studentRegistrationNumber = %d", studentRegistration);
+        return session.createQuery(hql).list();
     }
 }
