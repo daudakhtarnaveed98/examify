@@ -11,7 +11,7 @@ import java.util.List;
 // Annotation for rest controller.
 @RestController
 // Annotation for requesting url mapping.
-@RequestMapping("/arrangements")
+//@RequestMapping("/arrangements")
 // ArrangementRecordController class definition.
 public class ArrangementRecordController {
 
