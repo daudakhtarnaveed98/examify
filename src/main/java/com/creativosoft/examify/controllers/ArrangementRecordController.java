@@ -35,7 +35,7 @@ public class ArrangementRecordController {
     public @ResponseBody
     List getArrangements(@PathVariable(value="studentRegistration") int studentRegistration) {
         Session session = handler.openSession();
-        String hql = String.format("FROM ArrangementRecord R WHERE R.studentRegistrationNumber = %d", studentRegistration);
+        String hql = String.format("FROM ArrangementRecord R WHERE R.studentRegistrationNumber = %d ORDER BY R.date, R.startTime", studentRegistration);
         return session.createQuery(hql).list();
     }
 
@@ -48,8 +48,9 @@ public class ArrangementRecordController {
     public @ResponseBody
     String getPDF(@PathVariable(value="studentRegistration") int studentRegistration) throws IOException {
         Session session = handler.openSession();
-        String hql = String.format("FROM ArrangementRecord R WHERE R.studentRegistrationNumber = %d", studentRegistration);
+        String hql = String.format("FROM ArrangementRecord R WHERE R.studentRegistrationNumber = %d ORDER BY R.date, R.startTime", studentRegistration);
         List arrangementListGeneric = session.createQuery(hql).list();
+
         List<ArrangementRecord> arrangementRecords = new ArrayList<>();
         for (Object object: arrangementListGeneric) {
             arrangementRecords.add((ArrangementRecord) object);
