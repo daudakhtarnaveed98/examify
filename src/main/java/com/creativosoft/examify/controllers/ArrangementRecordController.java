@@ -53,7 +53,8 @@ public class ArrangementRecordController {
 
         List<ArrangementRecord> arrangementRecords = new ArrayList<>();
         for (Object object: arrangementListGeneric) {
-            arrangementRecords.add((ArrangementRecord) object);
+            ArrangementRecord record = (ArrangementRecord) object;
+            arrangementRecords.add(record);
         }
         PDF.createPDF(arrangementRecords, studentRegistration);
         return "{" + "\"link\"" + ":" + "\"pdf/" + studentRegistration + "_arrangements" + ".pdf\"" + "}";

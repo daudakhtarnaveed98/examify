@@ -4,7 +4,12 @@ package com.creativosoft.examify.helpers;
 // Importing libraries.
 import com.creativosoft.examify.models.ArrangementRecord;
 import org.apache.poi.ss.usermodel.Row;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalTime;
+import java.util.Date;
+import java.util.TimeZone;
 
 // Utils class definition.
 abstract class Utils {
@@ -18,7 +23,7 @@ abstract class Utils {
         String courseName;
         String batch;
         String courseCode;
-        String date;
+        Date date = null;
         String day;
         LocalTime startTime;
         LocalTime endTime;
@@ -50,7 +55,14 @@ abstract class Utils {
         day = dateDay[0];
 
         // Getting date.
-        date = dateDay[1];
+        // Formatting for date.
+        SimpleDateFormat dateFormatter = new SimpleDateFormat("dd/MM/yyyy");
+        dateFormatter.setTimeZone(TimeZone.getTimeZone("Asia/Karachi"));
+        try {
+            date = dateFormatter.parse(dateDay[1]);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
 
         // Splitting start and end times.
         String[] startEndTime = row.getCell(6).toString().split("-");

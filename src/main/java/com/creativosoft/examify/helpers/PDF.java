@@ -44,11 +44,15 @@ public abstract class PDF {
         table.addHeaderRow(headerRow);
 
         for (ArrangementRecord arrangementRecord : arrangements) {
+            // Formatting date.
+            String date = arrangementRecord.getDate().toString();
+            date = date.replace("00:00:00.0", "");
+
             Row<PDPage> row = table.createRow(12f);
             row.createCell(10, Integer.toString(arrangementRecord.getStudentRegistrationNumber()));
             row.createCell(15, arrangementRecord.getStudentName());
             row.createCell(15, arrangementRecord.getCourseName());
-            row.createCell(10, arrangementRecord.getDate());
+            row.createCell(10, date);
             row.createCell(10, arrangementRecord.getDay());
             row.createCell(10, arrangementRecord.getStartTime().toString());
             row.createCell(10, arrangementRecord.getEndTime().toString());

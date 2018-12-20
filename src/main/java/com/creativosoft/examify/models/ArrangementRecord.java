@@ -2,11 +2,14 @@
 package com.creativosoft.examify.models;
 
 // Importing libraries.
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.time.LocalTime;
+import java.util.Date;
 
 // Persistence annotations for hibernate entity and table.
 @Entity
@@ -29,7 +32,8 @@ public class ArrangementRecord {
     @Column(name = "course_code")
     private String courseCode;
     @Column(name = "date")
-    private String date;
+    @JsonFormat(timezone = "Asia/Karachi", pattern = "dd-MM-yyyy")
+    private Date date;
     @Column(name = "day")
     private String day;
     @Column(name = "start_time")
@@ -47,7 +51,7 @@ public class ArrangementRecord {
 
     // Constructor with ten parameters.
     public ArrangementRecord(int serialNumber, int studentRegistrationNumber, String studentName, String courseName, String batch,
-                      String courseCode, String date, String day, LocalTime startTime,
+                      String courseCode, Date date, String day, LocalTime startTime,
                       LocalTime endTime, String examLocation) {
         this.serialNumber = serialNumber;
         this.studentRegistrationNumber = studentRegistrationNumber;
@@ -87,7 +91,7 @@ public class ArrangementRecord {
         return courseCode;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
@@ -132,7 +136,7 @@ public class ArrangementRecord {
         this.courseCode = courseCode;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
