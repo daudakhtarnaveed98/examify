@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Examify</title>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="scripts/script.js"></script>
+  <link rel="stylesheet" href="styles/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Hind+Siliguri" rel="stylesheet">
+</head>
+<body>
+<header class="main_header">
+  <div class="logo_div">
+    <h2>Examify</h2>
+  </div>
+
+  <div class="search_form_div">
+    <form class="search_form">
+      <label for="search_field"></label><input type="search" id="search_field" placeholder="Registration No.">
+      <button id="search_button" type="button" onclick="getArrangementRecords()">Search</button>
+    </form>
+  </div>
+</header>
+
+<div class="table_div">
+  <table class="arrangements_table">
+    <thead>
+      <tr>
+        <th>Student Registration Number</th>
+        <th>Student Name</th>
+        <th>Batch</th>
+        <th>Course Code</th>
+        <th>Course Name</th>
+        <th>Exam Date</th>
+        <th>Exam Day</th>
+        <th>Exam Start Time</th>
+        <th>Exam End Time</th>
+        <th>Exam Venue</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+  <p class="welcome">Welcome, Please Search For Student Arrangements...</p>
+</div>
+</body>
+</html>
