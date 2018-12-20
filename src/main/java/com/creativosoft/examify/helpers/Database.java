@@ -57,22 +57,22 @@ public class Database {
     private static void createTable(@NotNull Set<Row> rows) {
         Session session = handler.openSession();
 
+        // Creating transaction to transact data.
+        Transaction transaction = session.beginTransaction();
+
         // Iterating the rows set using for each loop.
         for (Row row : rows) {
             if (row.getPhysicalNumberOfCells() != 0) {
                 // For each row, getting arrangement record object using Utils class.
                 ArrangementRecord arrangementRecord = Utils.getArrangementObject(row);
 
-                // Creating transaction to transact data.
-                Transaction transaction = session.beginTransaction();
-
                 // Saving arrangement record.
-                session.save(arrangementRecord);
-
-                // Committing transaction.
-                transaction.commit();
+                session.persist(arrangementRecord);
             }
         }
+
+        // Committing transaction.
+        transaction.commit();
 
         // Closing session.
         session.close();
